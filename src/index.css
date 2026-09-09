@@ -1,4 +1,4 @@
-:root {
+/*:root {
   --text: #6b6375;
   --text-h: #08060d;
   --bg: #fff;
@@ -44,6 +44,7 @@
     --shadow:
       rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
   } */
+   /*
 @media (max-width: 1024px) {
   :root {
     font-size: 16px;
@@ -92,6 +93,7 @@ h2 {
     margin: 20px 0;
   }
 } */
+ /*
 h1 {
   font-size: clamp(36px, 4vw + 1rem, 56px);
   letter-spacing: -1.68px;
@@ -124,3 +126,5 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+*/
+
