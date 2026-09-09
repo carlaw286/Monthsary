@@ -1,321 +1,3080 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <!-- <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>package</title>
-  </head> -->
-  <!-- <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body> -->
-<!-- </html> -->
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+  />
 
-<!--  
- 
-  CSS Blossoming Flowers at Magical Night.
-  I've taken some inspiration by Yup Nguyen's Artwork: https://dribbble.com/shots/11096994-Virtual-Garden.
-  Made with Pure CSS & ♥
--->
+  <title>A Bouquet For You ♡</title>
 
-<body class="not-loaded">
-  <div class="night"></div>
-  <div class="flowers">
-    <div class="flower flower--1">
-      <div class="flower__leafs flower__leafs--1">
-        <div class="flower__leaf flower__leaf--1"></div>
-        <div class="flower__leaf flower__leaf--2"></div>
-        <div class="flower__leaf flower__leaf--3"></div>
-        <div class="flower__leaf flower__leaf--4"></div>
-        <div class="flower__white-circle"></div>
+  <!-- =========================================================
+       GOOGLE FONTS
+       ========================================================= -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        <div class="flower__light flower__light--1"></div>
-        <div class="flower__light flower__light--2"></div>
-        <div class="flower__light flower__light--3"></div>
-        <div class="flower__light flower__light--4"></div>
-        <div class="flower__light flower__light--5"></div>
-        <div class="flower__light flower__light--6"></div>
-        <div class="flower__light flower__light--7"></div>
-        <div class="flower__light flower__light--8"></div>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
 
-      </div>
-      <div class="flower__line">
-        <div class="flower__line__leaf flower__line__leaf--1"></div>
-        <div class="flower__line__leaf flower__line__leaf--2"></div>
-        <div class="flower__line__leaf flower__line__leaf--3"></div>
-        <div class="flower__line__leaf flower__line__leaf--4"></div>
-        <div class="flower__line__leaf flower__line__leaf--5"></div>
-        <div class="flower__line__leaf flower__line__leaf--6"></div>
-      </div>
-    </div>
+  <style>
+    /* =========================================================
+       ROOT / VARIABLES
+       ========================================================= */
 
-    <div class="flower flower--2">
-      <div class="flower__leafs flower__leafs--2">
-        <div class="flower__leaf flower__leaf--1"></div>
-        <div class="flower__leaf flower__leaf--2"></div>
-        <div class="flower__leaf flower__leaf--3"></div>
-        <div class="flower__leaf flower__leaf--4"></div>
-        <div class="flower__white-circle"></div>
+    :root {
+      --blush: #f7d9df;
+      --blush-deep: #e9aebd;
 
-        <div class="flower__light flower__light--1"></div>
-        <div class="flower__light flower__light--2"></div>
-        <div class="flower__light flower__light--3"></div>
-        <div class="flower__light flower__light--4"></div>
-        <div class="flower__light flower__light--5"></div>
-        <div class="flower__light flower__light--6"></div>
-        <div class="flower__light flower__light--7"></div>
-        <div class="flower__light flower__light--8"></div>
+      --lavender: #ded8f1;
+      --lavender-deep: #b8acd9;
 
-      </div>
-      <div class="flower__line">
-        <div class="flower__line__leaf flower__line__leaf--1"></div>
-        <div class="flower__line__leaf flower__line__leaf--2"></div>
-        <div class="flower__line__leaf flower__line__leaf--3"></div>
-        <div class="flower__line__leaf flower__line__leaf--4"></div>
-      </div>
-    </div>
+      --cream: #fffaf4;
+      --cream-dark: #f6eee5;
 
-    <div class="flower flower--3">
-      <div class="flower__leafs flower__leafs--3">
-        <div class="flower__leaf flower__leaf--1"></div>
-        <div class="flower__leaf flower__leaf--2"></div>
-        <div class="flower__leaf flower__leaf--3"></div>
-        <div class="flower__leaf flower__leaf--4"></div>
-        <div class="flower__white-circle"></div>
+      --sage: #a9bca7;
+      --sage-dark: #71866f;
 
-        <div class="flower__light flower__light--1"></div>
-        <div class="flower__light flower__light--2"></div>
-        <div class="flower__light flower__light--3"></div>
-        <div class="flower__light flower__light--4"></div>
-        <div class="flower__light flower__light--5"></div>
-        <div class="flower__light flower__light--6"></div>
-        <div class="flower__light flower__light--7"></div>
-        <div class="flower__light flower__light--8"></div>
+      --gold: #c8a15a;
+      --gold-light: #e8d19b;
 
-      </div>
-      <div class="flower__line">
-        <div class="flower__line__leaf flower__line__leaf--1"></div>
-        <div class="flower__line__leaf flower__line__leaf--2"></div>
-        <div class="flower__line__leaf flower__line__leaf--3"></div>
-        <div class="flower__line__leaf flower__line__leaf--4"></div>
-      </div>
-    </div>
+      --wine: #7e3f50;
+      --text: #493a40;
+      --text-light: #796b71;
 
-    <div class="grow-ans" style="--d:1.2s">
-      <div class="flower__g-long">
-        <div class="flower__g-long__top"></div>
-        <div class="flower__g-long__bottom"></div>
-      </div>
-    </div>
+      --glass: rgba(255, 255, 255, 0.55);
+      --glass-border: rgba(255, 255, 255, 0.75);
 
-    <div class="growing-grass">
-      <div class="flower__grass flower__grass--1">
-        <div class="flower__grass--top"></div>
-        <div class="flower__grass--bottom"></div>
-        <div class="flower__grass__leaf flower__grass__leaf--1"></div>
-        <div class="flower__grass__leaf flower__grass__leaf--2"></div>
-        <div class="flower__grass__leaf flower__grass__leaf--3"></div>
-        <div class="flower__grass__leaf flower__grass__leaf--4"></div>
-        <div class="flower__grass__leaf flower__grass__leaf--5"></div>
-        <div class="flower__grass__leaf flower__grass__leaf--6"></div>
-        <div class="flower__grass__leaf flower__grass__leaf--7"></div>
-        <div class="flower__grass__leaf flower__grass__leaf--8"></div>
-        <div class="flower__grass__overlay"></div>
-      </div>
-    </div>
+      --shadow-soft:
+        0 25px 70px rgba(92, 60, 73, 0.14);
 
-    <div class="growing-grass">
-      <div class="flower__grass flower__grass--2">
-        <div class="flower__grass--top"></div>
-        <div class="flower__grass--bottom"></div>
-        <div class="flower__grass__leaf flower__grass__leaf--1"></div>
-        <div class="flower__grass__leaf flower__grass__leaf--2"></div>
-        <div class="flower__grass__leaf flower__grass__leaf--3"></div>
-        <div class="flower__grass__leaf flower__grass__leaf--4"></div>
-        <div class="flower__grass__leaf flower__grass__leaf--5"></div>
-        <div class="flower__grass__leaf flower__grass__leaf--6"></div>
-        <div class="flower__grass__leaf flower__grass__leaf--7"></div>
-        <div class="flower__grass__leaf flower__grass__leaf--8"></div>
-        <div class="flower__grass__overlay"></div>
-      </div>
-    </div>
+      --shadow-deep:
+        0 30px 90px rgba(92, 60, 73, 0.25);
 
-    <div class="grow-ans" style="--d:2.4s">
-      <div class="flower__g-right flower__g-right--1">
-        <div class="leaf"></div>
-      </div>
-    </div>
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+    }
 
-    <div class="grow-ans" style="--d:2.8s">
-      <div class="flower__g-right flower__g-right--2">
-        <div class="leaf"></div>
-      </div>
-    </div>
 
-    <div class="grow-ans" style="--d:2.8s">
-      <div class="flower__g-front">
-        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--1">
-          <div class="flower__g-front__leaf"></div>
+    /* =========================================================
+       RESET
+       ========================================================= */
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 20% 20%,
+          rgba(247, 217, 223, 0.8),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 80% 30%,
+          rgba(222, 216, 241, 0.8),
+          transparent 35%
+        ),
+        radial-gradient(
+          circle at 50% 100%,
+          rgba(169, 188, 167, 0.35),
+          transparent 35%
+        ),
+        var(--cream);
+
+      color: var(--text);
+      font-family: var(--sans);
+    }
+
+    button {
+      border: 0;
+      font: inherit;
+      cursor: pointer;
+    }
+
+
+    /* =========================================================
+       CANVAS PARTICLES
+       ========================================================= */
+
+    #particleCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+
+      pointer-events: none;
+      z-index: 1;
+    }
+
+
+    /* =========================================================
+       APP
+       ========================================================= */
+
+    #app {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 620px;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+
+    /* =========================================================
+       AMBIENT GLOW
+       ========================================================= */
+
+    .ambient {
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .ambient.one {
+      background: var(--blush);
+      left: -160px;
+      top: -140px;
+    }
+
+    .ambient.two {
+      background: var(--lavender);
+      right: -160px;
+      top: 20%;
+    }
+
+    .ambient.three {
+      background: var(--sage);
+      bottom: -200px;
+      left: 40%;
+    }
+
+
+    /* =========================================================
+       LANDING / UNBOXING
+       ========================================================= */
+
+    #landing {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 25px;
+
+      transition:
+        opacity 1s ease,
+        visibility 1s ease,
+        transform 1.2s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    #landing.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: scale(1.08);
+    }
+
+    .landing-content {
+      width: min(92vw, 620px);
+      text-align: center;
+
+      animation: landingFloat 5s ease-in-out infinite;
+    }
+
+    .eyebrow {
+      margin-bottom: 10px;
+
+      color: var(--gold);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+
+    .landing-title {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 10vw, 6.5rem);
+      font-weight: 500;
+      line-height: 0.85;
+      letter-spacing: -0.035em;
+      color: var(--wine);
+    }
+
+    .landing-subtitle {
+      margin: 25px auto 40px;
+      max-width: 420px;
+
+      color: var(--text-light);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .click-hint {
+      margin-top: 30px;
+
+      color: var(--text-light);
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+
+      animation: hintPulse 2s ease-in-out infinite;
+    }
+
+
+    /* =========================================================
+       ENVELOPE
+       ========================================================= */
+
+    .envelope-wrap {
+      position: relative;
+
+      width: min(270px, 70vw);
+      height: 190px;
+
+      margin: 0 auto;
+
+      cursor: pointer;
+
+      perspective: 1000px;
+      transition: transform 0.3s ease;
+    }
+
+    .envelope-wrap:hover {
+      transform: translateY(-7px);
+    }
+
+    .envelope-shadow {
+      position: absolute;
+      left: 10%;
+      right: 10%;
+      bottom: -25px;
+
+      height: 30px;
+
+      background: rgba(104, 69, 82, 0.18);
+      border-radius: 50%;
+      filter: blur(15px);
+
+      animation: shadowPulse 3s ease-in-out infinite;
+    }
+
+    .envelope {
+      position: absolute;
+      inset: 0;
+
+      border-radius: 7px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #fff8f4,
+          #f7dfe2
+        );
+
+      box-shadow:
+        0 25px 60px rgba(91, 59, 70, 0.18),
+        inset 0 0 0 1px rgba(255,255,255,.75);
+
+      overflow: visible;
+    }
+
+    .envelope::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          135deg,
+          transparent 49.5%,
+          rgba(213, 168, 180, .35) 50%,
+          transparent 50.5%
+        ),
+        linear-gradient(
+          225deg,
+          transparent 49.5%,
+          rgba(213, 168, 180, .35) 50%,
+          transparent 50.5%
+        );
+
+      border-radius: inherit;
+    }
+
+    .envelope-flap {
+      position: absolute;
+      left: 0;
+      top: 0;
+
+      width: 100%;
+      height: 110px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #fff8f4,
+          #f3d5da
+        );
+
+      clip-path: polygon(
+        0 0,
+        100% 0,
+        50% 100%
+      );
+
+      transform-origin: top center;
+
+      z-index: 4;
+
+      transition:
+        transform 1s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .envelope-seal {
+      position: absolute;
+      left: 50%;
+      top: 76px;
+
+      width: 45px;
+      height: 45px;
+
+      transform: translateX(-50%);
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle at 30% 25%,
+          #f2c9d2,
+          #c67d91
+        );
+
+      color: white;
+
+      box-shadow:
+        0 7px 18px rgba(126,63,80,.25);
+
+      z-index: 8;
+
+      font-family: var(--serif);
+      font-size: 1.4rem;
+
+      transition:
+        transform .6s ease,
+        opacity .5s ease;
+    }
+
+    .envelope-wrap.opening .envelope-flap {
+      transform: rotateX(180deg);
+    }
+
+    .envelope-wrap.opening .envelope-seal {
+      transform:
+        translateX(-50%)
+        scale(0.2)
+        rotate(20deg);
+
+      opacity: 0;
+    }
+
+
+    /* =========================================================
+       BOUQUET SCENE
+       ========================================================= */
+
+    #bouquetScene {
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      padding:
+        80px
+        20px
+        30px;
+
+      opacity: 0;
+      visibility: hidden;
+
+      transform: scale(.92) translateY(35px);
+
+      transition:
+        opacity 1.4s ease .3s,
+        transform 1.5s cubic-bezier(.22, 1, .36, 1) .3s,
+        visibility 1.4s ease;
+    }
+
+    #bouquetScene.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1) translateY(0);
+    }
+
+    .bouquet-heading {
+      text-align: center;
+      margin-bottom: 5px;
+    }
+
+    .bouquet-heading h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.3rem, 7vw, 4.6rem);
+      font-weight: 500;
+      line-height: .9;
+      color: var(--wine);
+    }
+
+    .bouquet-heading p {
+      margin-top: 12px;
+
+      color: var(--text-light);
+      font-size: .78rem;
+      letter-spacing: .06em;
+    }
+
+
+    /* =========================================================
+       BOUQUET
+       ========================================================= */
+
+    .bouquet {
+      position: relative;
+
+      width: min(600px, 95vw);
+      height: min(590px, 68vh);
+
+      min-height: 430px;
+
+      margin-top: 5px;
+    }
+
+    .bouquet-svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    /* Flower groups */
+
+    .flower {
+      cursor: pointer;
+
+      transform-box: fill-box;
+      transform-origin: center bottom;
+
+      transition:
+        filter .3s ease,
+        transform .35s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .flower:hover {
+      transform:
+        translateY(-8px)
+        scale(1.055);
+
+      filter:
+        drop-shadow(
+          0 8px 8px rgba(126,63,80,.12)
+        );
+    }
+
+    .flower:focus-visible {
+      outline: none;
+      filter:
+        drop-shadow(
+          0 0 8px rgba(200,161,90,.8)
+        );
+    }
+
+    .flower.sway {
+      animation: flowerSway 4s ease-in-out infinite;
+    }
+
+    .flower.delay-1 {
+      animation-delay: -.7s;
+    }
+
+    .flower.delay-2 {
+      animation-delay: -1.5s;
+    }
+
+    .flower.delay-3 {
+      animation-delay: -2.3s;
+    }
+
+
+    /* =========================================================
+       SVG ELEMENTS
+       ========================================================= */
+
+    .stem {
+      fill: none;
+      stroke: var(--sage-dark);
+      stroke-width: 5;
+      stroke-linecap: round;
+    }
+
+    .leaf {
+      fill: var(--sage);
+      stroke: var(--sage-dark);
+      stroke-width: 1.5;
+    }
+
+    .leaf-light {
+      fill: #c4d3c0;
+    }
+
+    .rose-center {
+      fill: #d7869b;
+    }
+
+    .rose-petal {
+      fill: #efb9c5;
+      stroke: #d993a7;
+      stroke-width: 1.5;
+    }
+
+    .rose-petal-light {
+      fill: #f8d7de;
+    }
+
+    .tulip {
+      fill: #d998ad;
+      stroke: #c07b91;
+      stroke-width: 1.5;
+    }
+
+    .tulip-light {
+      fill: #edbbc8;
+    }
+
+    .daisy-petal {
+      fill: #fffdf8;
+      stroke: #e8dfd1;
+      stroke-width: 1.3;
+    }
+
+    .daisy-center {
+      fill: var(--gold);
+    }
+
+    .baby-flower {
+      fill: #fffdf9;
+      stroke: #e6dce0;
+      stroke-width: 1;
+    }
+
+    .baby-center {
+      fill: var(--gold-light);
+    }
+
+
+    /* =========================================================
+       RIBBON
+       ========================================================= */
+
+    .ribbon-group {
+      cursor: pointer;
+
+      transform-box: fill-box;
+      transform-origin: center;
+
+      transition: transform .3s ease;
+    }
+
+    .ribbon-group:hover {
+      transform: scale(1.05);
+    }
+
+    .ribbon-main {
+      fill: #c98498;
+    }
+
+    .ribbon-light {
+      fill: #dfa5b4;
+    }
+
+    .ribbon-dark {
+      fill: #a95e75;
+    }
+
+    .ribbon-label {
+      font-family: var(--serif);
+      font-size: 15px;
+      fill: white;
+      letter-spacing: 2px;
+    }
+
+
+    /* =========================================================
+       BOUQUET HELPER UI
+       ========================================================= */
+
+    .bouquet-instruction {
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      display: flex;
+      gap: 8px;
+      align-items: center;
+
+      white-space: nowrap;
+
+      padding: 8px 14px;
+
+      background: rgba(255,255,255,.48);
+      border: 1px solid rgba(255,255,255,.7);
+      border-radius: 50px;
+
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+
+      color: var(--text-light);
+      font-size: .67rem;
+
+      box-shadow: 0 8px 30px rgba(80,50,60,.06);
+    }
+
+    .instruction-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: dotPulse 1.8s ease-in-out infinite;
+    }
+
+
+    /* =========================================================
+       MUSIC
+       ========================================================= */
+
+    .music-toggle {
+      position: fixed;
+      right: 20px;
+      top: 20px;
+
+      z-index: 50;
+
+      width: 44px;
+      height: 44px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      background: rgba(255,255,255,.48);
+      border: 1px solid rgba(255,255,255,.75);
+
+      color: var(--wine);
+
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+
+      box-shadow: var(--shadow-soft);
+
+      transition:
+        transform .25s ease,
+        background .25s ease;
+    }
+
+    .music-toggle:hover {
+      transform: scale(1.08);
+      background: rgba(255,255,255,.72);
+    }
+
+    .music-icon {
+      font-size: 1rem;
+    }
+
+    .music-toggle.playing .music-icon {
+      animation: musicBounce .8s ease-in-out infinite alternate;
+    }
+
+
+    /* =========================================================
+       MODAL BASE
+       ========================================================= */
+
+    .modal {
+      position: fixed;
+      inset: 0;
+
+      z-index: 100;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 25px;
+
+      background:
+        rgba(66, 45, 53, .28);
+
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+
+      opacity: 0;
+      visibility: hidden;
+
+      transition:
+        opacity .45s ease,
+        visibility .45s ease;
+    }
+
+    .modal.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+
+    /* =========================================================
+       FLOWER MEANING MODAL
+       ========================================================= */
+
+    .meaning-card {
+      position: relative;
+
+      width: min(430px, 94vw);
+
+      padding: 38px 30px 30px;
+
+      text-align: center;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.75),
+          rgba(255,245,245,.56)
+        );
+
+      border: 1px solid rgba(255,255,255,.85);
+      border-radius: 28px;
+
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+
+      box-shadow: var(--shadow-deep);
+
+      transform:
+        translateY(25px)
+        scale(.94);
+
+      transition:
+        transform .55s cubic-bezier(.22,1,.36,1);
+    }
+
+    .modal.open .meaning-card {
+      transform:
+        translateY(0)
+        scale(1);
+    }
+
+    .close-modal {
+      position: absolute;
+      right: 17px;
+      top: 15px;
+
+      width: 34px;
+      height: 34px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      background: rgba(255,255,255,.55);
+
+      color: var(--text-light);
+      font-size: 1.1rem;
+
+      transition: transform .2s ease;
+    }
+
+    .close-modal:hover {
+      transform: rotate(90deg);
+    }
+
+    .flower-icon {
+      width: 65px;
+      height: 65px;
+
+      margin: 0 auto 18px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      background: linear-gradient(
+        135deg,
+        var(--blush),
+        var(--lavender)
+      );
+
+      font-size: 2rem;
+    }
+
+    .meaning-card h3 {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: var(--wine);
+    }
+
+    .meaning-card .meaning-label {
+      margin-top: 4px;
+
+      color: var(--gold);
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .meaning-card p {
+      margin: 20px auto 0;
+      max-width: 330px;
+
+      color: var(--text-light);
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      line-height: 1.5;
+    }
+
+
+    /* =========================================================
+       LOVE LETTER MODAL
+       ========================================================= */
+
+    #letterModal {
+      background:
+        radial-gradient(
+          circle at 30% 30%,
+          rgba(247,217,223,.42),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 70% 70%,
+          rgba(222,216,241,.5),
+          transparent 35%
+        ),
+        rgba(59, 42, 49, .38);
+    }
+
+    .letter-card {
+      position: relative;
+
+      width: min(650px, 94vw);
+      max-height: min(85vh, 760px);
+
+      overflow: auto;
+
+      padding: clamp(35px, 7vw, 65px);
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.72),
+          rgba(255,249,244,.58)
+        );
+
+      border:
+        1px solid
+        rgba(255,255,255,.82);
+
+      border-radius: 28px;
+
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+
+      box-shadow:
+        0 40px 120px rgba(48,30,38,.27),
+        inset 0 1px 0 rgba(255,255,255,.9);
+
+      transform:
+        translateY(45px)
+        scale(.91)
+        rotateX(5deg);
+
+      transition:
+        transform .8s cubic-bezier(.22,1,.36,1);
+    }
+
+    #letterModal.open .letter-card {
+      transform:
+        translateY(0)
+        scale(1)
+        rotateX(0);
+    }
+
+    .letter-decoration {
+      position: absolute;
+      pointer-events: none;
+
+      font-family: var(--serif);
+      color: rgba(200,161,90,.38);
+    }
+
+    .letter-decoration.top {
+      top: 12px;
+      left: 22px;
+      font-size: 4rem;
+    }
+
+    .letter-decoration.bottom {
+      right: 22px;
+      bottom: 8px;
+      font-size: 4rem;
+      transform: rotate(180deg);
+    }
+
+    .letter-small {
+      color: var(--gold);
+
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+
+      text-align: center;
+    }
+
+    .letter-title {
+      margin-top: 9px;
+
+      color: var(--wine);
+
+      font-family: var(--serif);
+      font-size: clamp(3rem, 9vw, 5rem);
+      font-weight: 500;
+      line-height: .85;
+
+      text-align: center;
+    }
+
+    .letter-line {
+      width: 80px;
+      height: 1px;
+
+      margin: 23px auto;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+    }
+
+    .letter-content {
+      color: var(--text);
+      font-family: var(--serif);
+      font-size: clamp(1.15rem, 3vw, 1.4rem);
+      line-height: 1.65;
+
+      white-space: pre-line;
+      text-align: left;
+    }
+
+    .letter-signature {
+      margin-top: 30px;
+
+      color: var(--wine);
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-style: italic;
+
+      text-align: right;
+    }
+
+    .letter-actions {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+
+      margin-top: 35px;
+    }
+
+    .letter-button {
+      padding: 11px 20px;
+
+      border-radius: 50px;
+
+      background: rgba(255,255,255,.55);
+      border: 1px solid rgba(255,255,255,.85);
+
+      color: var(--wine);
+
+      font-size: .75rem;
+      font-weight: 600;
+
+      transition:
+        transform .25s ease,
+        background .25s ease,
+        box-shadow .25s ease;
+    }
+
+    .letter-button.primary {
+      background: var(--wine);
+      color: white;
+
+      box-shadow:
+        0 8px 25px rgba(126,63,80,.2);
+    }
+
+    .letter-button:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,.85);
+    }
+
+    .letter-button.primary:hover {
+      background: #6e3445;
+    }
+
+
+    /* =========================================================
+       PETAL BURST
+       ========================================================= */
+
+    .burst-petal {
+      position: fixed;
+      z-index: 200;
+
+      width: 12px;
+      height: 18px;
+
+      pointer-events: none;
+
+      border-radius:
+        100% 0
+        100% 0;
+
+      background: var(--blush-deep);
+
+      animation:
+        burstPetal 1.8s cubic-bezier(.1,.8,.2,1)
+        forwards;
+    }
+
+
+    /* =========================================================
+       ANIMATIONS
+       ========================================================= */
+
+    @keyframes landingFloat {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-7px);
+      }
+    }
+
+    @keyframes hintPulse {
+      0%, 100% {
+        opacity: .5;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes shadowPulse {
+      0%, 100% {
+        transform: scaleX(.9);
+        opacity: .5;
+      }
+
+      50% {
+        transform: scaleX(1.05);
+        opacity: .25;
+      }
+    }
+
+    @keyframes flowerSway {
+      0%, 100% {
+        transform: rotate(-1deg);
+      }
+
+      50% {
+        transform: rotate(1.5deg);
+      }
+    }
+
+    @keyframes dotPulse {
+      0%, 100% {
+        transform: scale(.7);
+        opacity: .5;
+      }
+
+      50% {
+        transform: scale(1.2);
+        opacity: 1;
+      }
+    }
+
+    @keyframes musicBounce {
+      from {
+        transform: translateY(1px);
+      }
+
+      to {
+        transform: translateY(-3px);
+      }
+    }
+
+    @keyframes burstPetal {
+      0% {
+        transform:
+          translate(-50%, -50%)
+          rotate(0)
+          scale(.5);
+
+        opacity: 1;
+      }
+
+      100% {
+        transform:
+          translate(
+            calc(-50% + var(--x)),
+            calc(-50% + var(--y))
+          )
+          rotate(var(--rotation))
+          scale(1);
+
+        opacity: 0;
+      }
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media (max-width: 600px) {
+
+      #app {
+        min-height: 560px;
+      }
+
+      .landing-title {
+        font-size: clamp(3.2rem, 16vw, 5rem);
+      }
+
+      .landing-subtitle {
+        margin-bottom: 30px;
+      }
+
+      .envelope-wrap {
+        width: 230px;
+        height: 160px;
+      }
+
+      .envelope-flap {
+        height: 95px;
+      }
+
+      .envelope-seal {
+        top: 65px;
+        width: 40px;
+        height: 40px;
+      }
+
+      #bouquetScene {
+        padding-top: 65px;
+        padding-bottom: 15px;
+      }
+
+      .bouquet-heading h2 {
+        font-size: 2.8rem;
+      }
+
+      .bouquet-heading p {
+        font-size: .68rem;
+      }
+
+      .bouquet {
+        width: 100vw;
+        height: 58vh;
+        min-height: 390px;
+      }
+
+      .bouquet-instruction {
+        bottom: 2px;
+        font-size: .59rem;
+      }
+
+      .letter-card {
+        padding: 40px 25px 30px;
+        border-radius: 22px;
+      }
+
+      .letter-content {
+        font-size: 1.16rem;
+      }
+
+      .letter-title {
+        font-size: 3.4rem;
+      }
+
+      .music-toggle {
+        right: 14px;
+        top: 14px;
+      }
+    }
+
+    @media (max-height: 700px) {
+
+      #bouquetScene {
+        padding-top: 45px;
+      }
+
+      .bouquet-heading h2 {
+        font-size: 2.7rem;
+      }
+
+      .bouquet {
+        height: 66vh;
+        min-height: 350px;
+      }
+    }
+
+    /* Reduced motion accessibility */
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <!-- =========================================================
+       APP
+       ========================================================= -->
+
+  <main id="app">
+
+    <!-- Ambient background -->
+    <div class="ambient one"></div>
+    <div class="ambient two"></div>
+    <div class="ambient three"></div>
+
+    <!-- Canvas particle layer -->
+    <canvas id="particleCanvas"></canvas>
+
+
+    <!-- =======================================================
+         OPTIONAL MUSIC
+
+         Replace "music.mp3" with your own royalty-free/local
+         audio file.
+
+         Example:
+         <source src="assets/our-song.mp3" type="audio/mpeg">
+         ======================================================= -->
+
+    <audio id="backgroundMusic" loop preload="none">
+      <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <button
+      class="music-toggle"
+      id="musicToggle"
+      aria-label="Toggle background music"
+      title="Music"
+    >
+      <span class="music-icon">♫</span>
+    </button>
+
+
+    <!-- =======================================================
+         PHASE A — UNBOXING
+         ======================================================= -->
+
+    <section id="landing">
+
+      <div class="landing-content">
+
+        <div class="eyebrow">
+          A little something for you
         </div>
-        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--2">
-          <div class="flower__g-front__leaf"></div>
+
+        <h1 class="landing-title">
+          For You,
+          <br>
+          With Love.
+        </h1>
+
+        <p class="landing-subtitle">
+          There is something waiting inside.
+          Take a little moment, open it gently,
+          and let the flowers say what words sometimes cannot.
+        </p>
+
+
+        <!-- Interactive envelope -->
+
+        <div
+          class="envelope-wrap"
+          id="envelope"
+          role="button"
+          tabindex="0"
+          aria-label="Open your gift"
+        >
+
+          <div class="envelope-shadow"></div>
+
+          <div class="envelope">
+
+            <div class="envelope-flap"></div>
+
+            <div class="envelope-seal">
+              ♡
+            </div>
+
+          </div>
+
         </div>
-        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--3">
-          <div class="flower__g-front__leaf"></div>
+
+        <div class="click-hint">
+          Tap the envelope to open
         </div>
-        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--4">
-          <div class="flower__g-front__leaf"></div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         PHASE B — BOUQUET
+         ======================================================= -->
+
+    <section id="bouquetScene">
+
+      <div class="bouquet-heading">
+
+        <div class="eyebrow">
+          A bouquet made just for you
         </div>
-        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--5">
-          <div class="flower__g-front__leaf"></div>
+
+        <h2>
+          Every flower<br>
+          has a meaning.
+        </h2>
+
+        <p>
+          Tap a flower to discover what it says.
+        </p>
+
+      </div>
+
+
+      <!-- =====================================================
+           SVG BOUQUET
+
+           All flowers are vector-based and require no images.
+           ===================================================== -->
+
+      <div class="bouquet">
+
+        <svg
+          class="bouquet-svg"
+          viewBox="0 0 600 590"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-label="Interactive bouquet"
+        >
+
+          <!-- ================================
+               BACKGROUND FOLIAGE
+               ================================ -->
+
+          <g opacity=".9">
+
+            <path
+              class="stem"
+              d="M300 510 C290 400 240 290 205 145"
+            />
+
+            <path
+              class="stem"
+              d="M300 510 C315 390 360 270 420 125"
+            />
+
+            <path
+              class="stem"
+              d="M300 510 C260 390 160 320 120 225"
+            />
+
+            <path
+              class="stem"
+              d="M300 510 C350 390 470 320 500 205"
+            />
+
+            <path
+              class="stem"
+              d="M300 510 C295 370 300 260 300 105"
+            />
+
+          </g>
+
+
+          <!-- Leaves -->
+
+          <g>
+            <path
+              class="leaf"
+              d="M225 360 C170 320 135 330 116 365 C165 375 195 372 225 360Z"
+            />
+
+            <path
+              class="leaf"
+              d="M382 360 C430 320 466 325 485 356 C445 375 410 375 382 360Z"
+            />
+
+            <path
+              class="leaf-light"
+              d="M250 420 C190 400 168 420 155 455 C200 460 225 448 250 420Z"
+            />
+
+            <path
+              class="leaf-light"
+              d="M355 420 C410 398 440 418 452 450 C410 457 380 448 355 420Z"
+            />
+
+            <path
+              class="leaf"
+              d="M270 315 C230 275 226 242 245 220 C278 252 282 282 270 315Z"
+            />
+
+            <path
+              class="leaf"
+              d="M335 315 C380 275 383 238 363 215 C331 250 327 282 335 315Z"
+            />
+
+          </g>
+
+
+          <!-- =================================================
+               BABY'S BREATH
+               ================================================= -->
+
+          <g
+            class="flower sway"
+            data-flower="Baby's Breath"
+            data-meaning="For the quiet beauty of the little things — the tiny moments that become precious memories."
+            tabindex="0"
+            role="button"
+            aria-label="Baby's Breath"
+          >
+
+            <path
+              class="stem"
+              d="M190 300 C180 220 175 165 150 110"
+              stroke-width="2"
+            />
+
+            <path
+              class="stem"
+              d="M190 300 C200 225 210 180 225 125"
+              stroke-width="2"
+            />
+
+            <circle class="baby-flower" cx="150" cy="110" r="8"/>
+            <circle class="baby-center" cx="150" cy="110" r="3"/>
+
+            <circle class="baby-flower" cx="165" cy="145" r="7"/>
+            <circle class="baby-center" cx="165" cy="145" r="2.5"/>
+
+            <circle class="baby-flower" cx="225" cy="125" r="8"/>
+            <circle class="baby-center" cx="225" cy="125" r="3"/>
+
+            <circle class="baby-flower" cx="210" cy="165" r="7"/>
+            <circle class="baby-center" cx="210" cy="165" r="2.5"/>
+
+            <circle class="baby-flower" cx="135" cy="150" r="6"/>
+            <circle class="baby-center" cx="135" cy="150" r="2"/>
+
+          </g>
+
+
+          <!-- =================================================
+               PINK ROSE — CENTER
+               ================================================= -->
+
+          <g
+            class="flower sway delay-1"
+            data-flower="Pink Rose"
+            data-meaning="For gentleness, affection, gratitude, and the tenderness I feel whenever I think of you."
+            tabindex="0"
+            role="button"
+            aria-label="Pink Rose"
+          >
+
+            <!-- stem -->
+
+            <path
+              class="stem"
+              d="M300 410 C300 300 300 190 300 115"
+            />
+
+            <!-- outer petals -->
+
+            <circle
+              class="rose-petal-light"
+              cx="300"
+              cy="102"
+              r="45"
+            />
+
+            <ellipse
+              class="rose-petal"
+              cx="277"
+              cy="110"
+              rx="28"
+              ry="40"
+              transform="rotate(-30 277 110)"
+            />
+
+            <ellipse
+              class="rose-petal"
+              cx="323"
+              cy="110"
+              rx="28"
+              ry="40"
+              transform="rotate(30 323 110)"
+            />
+
+            <ellipse
+              class="rose-petal"
+              cx="300"
+              cy="80"
+              rx="27"
+              ry="38"
+            />
+
+            <ellipse
+              class="rose-petal"
+              cx="300"
+              cy="125"
+              rx="29"
+              ry="36"
+            />
+
+            <!-- inner petals -->
+
+            <path
+              class="rose-petal"
+              d="
+                M300 72
+                C276 75 276 103 300 112
+                C324 102 324 77 300 72Z
+              "
+            />
+
+            <path
+              class="rose-petal-light"
+              d="
+                M290 90
+                C300 76 315 86 309 99
+                C303 109 287 105 290 90Z
+              "
+            />
+
+            <circle
+              class="rose-center"
+              cx="300"
+              cy="96"
+              r="8"
+            />
+
+          </g>
+
+
+          <!-- =================================================
+               TULIP — LEFT
+               ================================================= -->
+
+          <g
+            class="flower sway delay-2"
+            data-flower="Pink Tulip"
+            data-meaning="For new beginnings, warmth, and the beautiful possibility of everything still waiting ahead of us."
+            tabindex="0"
+            role="button"
+            aria-label="Pink Tulip"
+          >
+
+            <path
+              class="stem"
+              d="M225 405 C225 330 215 245 220 175"
+            />
+
+            <path
+              class="tulip"
+              d="
+                M220 195
+                C190 185 178 150 190 125
+                C205 145 218 145 220 112
+                C230 145 246 143 258 125
+                C268 160 250 188 220 195Z
+              "
+            />
+
+            <path
+              class="tulip-light"
+              d="
+                M220 190
+                C210 165 210 143 220 112
+                C230 143 237 165 220 190Z
+              "
+            />
+
+          </g>
+
+
+          <!-- =================================================
+               TULIP — RIGHT
+               ================================================= -->
+
+          <g
+            class="flower sway delay-3"
+            data-flower="Lavender Tulip"
+            data-meaning="For enchantment, admiration, and that feeling of being quietly amazed by someone."
+            tabindex="0"
+            role="button"
+            aria-label="Lavender Tulip"
+          >
+
+            <path
+              class="stem"
+              d="M380 410 C380 325 390 245 385 170"
+            />
+
+            <path
+              d="
+                M385 190
+                C355 180 343 148 355 120
+                C368 140 380 143 385 108
+                C394 143 410 140 422 122
+                C433 153 415 184 385 190Z
+              "
+              fill="#bbaed9"
+              stroke="#a596c6"
+              stroke-width="1.5"
+            />
+
+            <path
+              d="
+                M385 186
+                C376 160 377 137 385 108
+                C395 139 401 161 385 186Z
+              "
+              fill="#d8d0ed"
+            />
+
+          </g>
+
+
+          <!-- =================================================
+               DAISY — LEFT
+               ================================================= -->
+
+          <g
+            class="flower sway"
+            data-flower="White Daisy"
+            data-meaning="For innocence, sincerity, and the simple happiness of being around someone who makes ordinary days feel special."
+            tabindex="0"
+            role="button"
+            aria-label="White Daisy"
+          >
+
+            <path
+              class="stem"
+              d="M160 420 C145 335 125 270 115 205"
+            />
+
+            <g transform="translate(110 195)">
+
+              <ellipse
+                class="daisy-petal"
+                cx="0"
+                cy="-28"
+                rx="13"
+                ry="28"
+              />
+
+              <ellipse
+                class="daisy-petal"
+                cx="28"
+                cy="0"
+                rx="13"
+                ry="28"
+                transform="rotate(90 28 0)"
+              />
+
+              <ellipse
+                class="daisy-petal"
+                cx="0"
+                cy="28"
+                rx="13"
+                ry="28"
+              />
+
+              <ellipse
+                class="daisy-petal"
+                cx="-28"
+                cy="0"
+                rx="13"
+                ry="28"
+                transform="rotate(90 -28 0)"
+              />
+
+              <ellipse
+                class="daisy-petal"
+                cx="20"
+                cy="-20"
+                rx="12"
+                ry="24"
+                transform="rotate(45 20 -20)"
+              />
+
+              <ellipse
+                class="daisy-petal"
+                cx="-20"
+                cy="-20"
+                rx="12"
+                ry="24"
+                transform="rotate(-45 -20 -20)"
+              />
+
+              <ellipse
+                class="daisy-petal"
+                cx="20"
+                cy="20"
+                rx="12"
+                ry="24"
+                transform="rotate(-45 20 20)"
+              />
+
+              <ellipse
+                class="daisy-petal"
+                cx="-20"
+                cy="20"
+                rx="12"
+                ry="24"
+                transform="rotate(45 -20 20)"
+              />
+
+              <circle
+                class="daisy-center"
+                r="15"
+              />
+
+            </g>
+
+          </g>
+
+
+          <!-- =================================================
+               DAISY — RIGHT
+               ================================================= -->
+
+          <g
+            class="flower sway delay-2"
+            data-flower="Little Daisy"
+            data-meaning="For joy, playfulness, and all the little reasons I find myself smiling when you're near."
+            tabindex="0"
+            role="button"
+            aria-label="Little Daisy"
+          >
+
+            <path
+              class="stem"
+              d="M430 420 C445 340 470 280 475 230"
+            />
+
+            <g transform="translate(475 220) scale(.78)">
+
+              <ellipse
+                class="daisy-petal"
+                cx="0"
+                cy="-28"
+                rx="13"
+                ry="28"
+              />
+
+              <ellipse
+                class="daisy-petal"
+                cx="28"
+                cy="0"
+                rx="13"
+                ry="28"
+                transform="rotate(90 28 0)"
+              />
+
+              <ellipse
+                class="daisy-petal"
+                cx="0"
+                cy="28"
+                rx="13"
+                ry="28"
+              />
+
+              <ellipse
+                class="daisy-petal"
+                cx="-28"
+                cy="0"
+                rx="13"
+                ry="28"
+                transform="rotate(90 -28 0)"
+              />
+
+              <ellipse
+                class="daisy-petal"
+                cx="20"
+                cy="-20"
+                rx="12"
+                ry="24"
+                transform="rotate(45 20 -20)"
+              />
+
+              <ellipse
+                class="daisy-petal"
+                cx="-20"
+                cy="-20"
+                rx="12"
+                ry="24"
+                transform="rotate(-45 -20 -20)"
+              />
+
+              <circle
+                class="daisy-center"
+                r="15"
+              />
+
+            </g>
+
+          </g>
+
+
+          <!-- =================================================
+               EXTRA ROSE — LEFT LOWER
+               ================================================= -->
+
+          <g
+            class="flower sway delay-3"
+            data-flower="Blush Rose"
+            data-meaning="For appreciation — a small reminder that you are treasured more deeply than I can always put into words."
+            tabindex="0"
+            role="button"
+            aria-label="Blush Rose"
+          >
+
+            <path
+              class="stem"
+              d="M260 445 C245 370 230 330 205 280"
+            />
+
+            <circle
+              cx="200"
+              cy="265"
+              r="32"
+              fill="#f1c0cc"
+            />
+
+            <ellipse
+              class="rose-petal"
+              cx="185"
+              cy="270"
+              rx="18"
+              ry="27"
+              transform="rotate(-35 185 270)"
+            />
+
+            <ellipse
+              class="rose-petal-light"
+              cx="215"
+              cy="270"
+              rx="18"
+              ry="27"
+              transform="rotate(35 215 270)"
+            />
+
+            <path
+              class="rose-petal"
+              d="
+                M200 245
+                C183 250 184 270 200 277
+                C217 270 216 250 200 245Z
+              "
+            />
+
+            <circle
+              class="rose-center"
+              cx="200"
+              cy="263"
+              r="6"
+            />
+
+          </g>
+
+
+          <!-- =================================================
+               EXTRA ROSE — RIGHT LOWER
+               ================================================= -->
+
+          <g
+            class="flower sway delay-1"
+            data-flower="Dusty Rose"
+            data-meaning="For a love that feels calm and familiar — soft enough to feel like home."
+            tabindex="0"
+            role="button"
+            aria-label="Dusty Rose"
+          >
+
+            <path
+              class="stem"
+              d="M340 445 C355 370 375 325 400 285"
+            />
+
+            <circle
+              cx="405"
+              cy="270"
+              r="34"
+              fill="#e9b4c1"
+            />
+
+            <ellipse
+              class="rose-petal"
+              cx="390"
+              cy="275"
+              rx="18"
+              ry="27"
+              transform="rotate(-35 390 275)"
+            />
+
+            <ellipse
+              class="rose-petal-light"
+              cx="420"
+              cy="275"
+              rx="18"
+              ry="27"
+              transform="rotate(35 420 275)"
+            />
+
+            <path
+              class="rose-petal"
+              d="
+                M405 250
+                C388 255 389 275 405 282
+                C422 275 421 255 405 250Z
+              "
+            />
+
+            <circle
+              class="rose-center"
+              cx="405"
+              cy="268"
+              r="6"
+            />
+
+          </g>
+
+
+          <!-- =================================================
+               RIBBON
+
+               IMPORTANT:
+               This is the hidden love-letter trigger.
+               Change "Open Me" if desired.
+               ================================================= -->
+
+          <g
+            class="ribbon-group"
+            id="ribbon"
+            tabindex="0"
+            role="button"
+            aria-label="Open love letter"
+          >
+
+            <!-- left ribbon tail -->
+
+            <path
+              class="ribbon-light"
+              d="
+                M250 430
+                L220 490
+                L272 468
+                L285 505
+                L305 440Z
+              "
+            />
+
+            <!-- right ribbon tail -->
+
+            <path
+              class="ribbon-dark"
+              d="
+                M350 430
+                L380 490
+                L328 468
+                L315 505
+                L295 440Z
+              "
+            />
+
+            <!-- central ribbon -->
+
+            <path
+              class="ribbon-main"
+              d="
+                M270 412
+                Q300 425 330 412
+                L330 460
+                Q300 473 270 460Z
+              "
+            />
+
+            <text
+              x="300"
+              y="443"
+              text-anchor="middle"
+              class="ribbon-label"
+            >
+              OPEN ME
+            </text>
+
+          </g>
+
+
+          <!-- bouquet wrapping paper -->
+
+          <path
+            d="
+              M215 440
+              Q300 475 385 440
+              L350 555
+              Q300 575 250 555Z
+            "
+            fill="#f4eee7"
+            opacity=".9"
+          />
+
+          <path
+            d="
+              M235 447
+              Q300 475 365 447
+            "
+            fill="none"
+            stroke="#e4d9cf"
+            stroke-width="2"
+          />
+
+        </svg>
+
+
+        <div class="bouquet-instruction">
+          <span class="instruction-dot"></span>
+          Tap a flower · tap the ribbon
         </div>
-        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--6">
-          <div class="flower__g-front__leaf"></div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         FLOWER MEANING MODAL
+         ======================================================= -->
+
+    <div
+      class="modal"
+      id="meaningModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="meaningTitle"
+    >
+
+      <div class="meaning-card">
+
+        <button
+          class="close-modal"
+          data-close="meaningModal"
+          aria-label="Close"
+        >
+          ×
+        </button>
+
+        <div class="flower-icon" id="meaningIcon">
+          🌸
         </div>
-        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--7">
-          <div class="flower__g-front__leaf"></div>
+
+        <h3 id="meaningTitle">
+          Pink Rose
+        </h3>
+
+        <div class="meaning-label">
+          Flower meaning
         </div>
-        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--8">
-          <div class="flower__g-front__leaf"></div>
+
+        <p id="meaningText">
+          For gentleness and affection.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- =======================================================
+         LOVE LETTER
+         ======================================================= -->
+
+    <div
+      class="modal"
+      id="letterModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="letterTitle"
+    >
+
+      <div class="letter-card">
+
+        <div class="letter-decoration top">
+          ❦
         </div>
-        <div class="flower__g-front__line"></div>
+
+        <div class="letter-decoration bottom">
+          ❦
+        </div>
+
+        <button
+          class="close-modal"
+          data-close="letterModal"
+          aria-label="Close love letter"
+        >
+          ×
+        </button>
+
+
+        <div class="letter-small">
+          A little letter for you
+        </div>
+
+        <h2
+          class="letter-title"
+          id="letterTitle"
+        >
+          My Love
+        </h2>
+
+        <div class="letter-line"></div>
+
+
+        <!-- =====================================================
+             CUSTOM LOVE LETTER
+
+             ✏️ EDIT THIS SECTION
+
+             Replace the text below with your personal message.
+
+             Keep the line breaks if you want the same appearance.
+             ===================================================== -->
+
+        <div class="letter-content" id="letterContent">
+
+There are some things that flowers can say better than I can.
+
+So I wanted to give you a little bouquet made of all the things I feel but don't always know how to say.
+
+The pink roses are for the tenderness you bring into my life.
+
+The tulips are for all the beautiful beginnings and possibilities that I hope we continue to discover together.
+
+The daisies are for the little moments — the laughs, the quiet conversations, the random memories — that somehow become my favorite ones.
+
+And the baby's breath is for the small things.
+
+Because sometimes love isn't only found in grand gestures.
+
+Sometimes it's in remembering.
+Sometimes it's in staying.
+Sometimes it's simply in choosing someone, again and again.
+
+And if you ever wonder what you mean to me...
+
+I hope this little bouquet reminds you.
+
+You are loved.
+You are appreciated.
+And you are someone I am very, very grateful to have met.
+
+        </div>
+
+
+        <div class="letter-signature">
+          With all my heart, ♡
+        </div>
+
+
+        <div class="letter-actions">
+
+          <button
+            class="letter-button primary"
+            id="burstAgain"
+          >
+            Send more flowers ✿
+          </button>
+
+          <button
+            class="letter-button"
+            data-close="letterModal"
+          >
+            Keep the bouquet
+          </button>
+
+        </div>
+
       </div>
+
     </div>
 
-    <div class="grow-ans" style="--d:3.2s">
-      <div class="flower__g-fr">
-        <div class="leaf"></div>
-        <div class="flower__g-fr__leaf flower__g-fr__leaf--1"></div>
-        <div class="flower__g-fr__leaf flower__g-fr__leaf--2"></div>
-        <div class="flower__g-fr__leaf flower__g-fr__leaf--3"></div>
-        <div class="flower__g-fr__leaf flower__g-fr__leaf--4"></div>
-        <div class="flower__g-fr__leaf flower__g-fr__leaf--5"></div>
-        <div class="flower__g-fr__leaf flower__g-fr__leaf--6"></div>
-        <div class="flower__g-fr__leaf flower__g-fr__leaf--7"></div>
-        <div class="flower__g-fr__leaf flower__g-fr__leaf--8"></div>
-      </div>
-    </div>
+  </main>
 
-    <div class="long-g long-g--0">
-      <div class="grow-ans" style="--d:3s">
-        <div class="leaf leaf--0"></div>
-      </div>
-      <div class="grow-ans" style="--d:2.2s">
-        <div class="leaf leaf--1"></div>
-      </div>
-      <div class="grow-ans" style="--d:3.4s">
-        <div class="leaf leaf--2"></div>
-      </div>
-      <div class="grow-ans" style="--d:3.6s">
-        <div class="leaf leaf--3"></div>
-      </div>
-    </div>
 
-    <div class="long-g long-g--1">
-      <div class="grow-ans" style="--d:3.6s">
-        <div class="leaf leaf--0"></div>
-      </div>
-      <div class="grow-ans" style="--d:3.8s">
-        <div class="leaf leaf--1"></div>
-      </div>
-      <div class="grow-ans" style="--d:4s">
-        <div class="leaf leaf--2"></div>
-      </div>
-      <div class="grow-ans" style="--d:4.2s">
-        <div class="leaf leaf--3"></div>
-      </div>
-    </div>
+  <!-- =========================================================
+       JAVASCRIPT
+       ========================================================= -->
 
-    <div class="long-g long-g--2">
-      <div class="grow-ans" style="--d:4s">
-        <div class="leaf leaf--0"></div>
-      </div>
-      <div class="grow-ans" style="--d:4.2s">
-        <div class="leaf leaf--1"></div>
-      </div>
-      <div class="grow-ans" style="--d:4.4s">
-        <div class="leaf leaf--2"></div>
-      </div>
-      <div class="grow-ans" style="--d:4.6s">
-        <div class="leaf leaf--3"></div>
-      </div>
-    </div>
+  <script>
 
-    <div class="long-g long-g--3">
-      <div class="grow-ans" style="--d:4s">
-        <div class="leaf leaf--0"></div>
-      </div>
-      <div class="grow-ans" style="--d:4.2s">
-        <div class="leaf leaf--1"></div>
-      </div>
-      <div class="grow-ans" style="--d:3s">
-        <div class="leaf leaf--2"></div>
-      </div>
-      <div class="grow-ans" style="--d:3.6s">
-        <div class="leaf leaf--3"></div>
-      </div>
-    </div>
+    /* =========================================================
+       PARTICLE SYSTEM
+       ========================================================= */
 
-    <div class="long-g long-g--4">
-      <div class="grow-ans" style="--d:4s">
-        <div class="leaf leaf--0"></div>
-      </div>
-      <div class="grow-ans" style="--d:4.2s">
-        <div class="leaf leaf--1"></div>
-      </div>
-      <div class="grow-ans" style="--d:3s">
-        <div class="leaf leaf--2"></div>
-      </div>
-      <div class="grow-ans" style="--d:3.6s">
-        <div class="leaf leaf--3"></div>
-      </div>
-    </div>
+    const canvas =
+      document.getElementById("particleCanvas");
 
-    <div class="long-g long-g--5">
-      <div class="grow-ans" style="--d:4s">
-        <div class="leaf leaf--0"></div>
-      </div>
-      <div class="grow-ans" style="--d:4.2s">
-        <div class="leaf leaf--1"></div>
-      </div>
-      <div class="grow-ans" style="--d:3s">
-        <div class="leaf leaf--2"></div>
-      </div>
-      <div class="grow-ans" style="--d:3.6s">
-        <div class="leaf leaf--3"></div>
-      </div>
-    </div>
+    const ctx =
+      canvas.getContext("2d");
 
-    <div class="long-g long-g--6">
-      <div class="grow-ans" style="--d:4.2s">
-        <div class="leaf leaf--0"></div>
-      </div>
-      <div class="grow-ans" style="--d:4.4s">
-        <div class="leaf leaf--1"></div>
-      </div>
-      <div class="grow-ans" style="--d:4.6s">
-        <div class="leaf leaf--2"></div>
-      </div>
-      <div class="grow-ans" style="--d:4.8s">
-        <div class="leaf leaf--3"></div>
-      </div>
-    </div>
+    let particles = [];
 
-    <div class="long-g long-g--7">
-      <div class="grow-ans" style="--d:3s">
-        <div class="leaf leaf--0"></div>
-      </div>
-      <div class="grow-ans" style="--d:3.2s">
-        <div class="leaf leaf--1"></div>
-      </div>
-      <div class="grow-ans" style="--d:3.5s">
-        <div class="leaf leaf--2"></div>
-      </div>
-      <div class="grow-ans" style="--d:3.6s">
-        <div class="leaf leaf--3"></div>
-      </div>
-    </div>
-  </div>
+    let particleWidth = window.innerWidth;
+    let particleHeight = window.innerHeight;
+
+
+    function resizeCanvas() {
+
+      const dpr =
+        Math.min(window.devicePixelRatio || 1, 2);
+
+      particleWidth = window.innerWidth;
+      particleHeight = window.innerHeight;
+
+      canvas.width =
+        particleWidth * dpr;
+
+      canvas.height =
+        particleHeight * dpr;
+
+      canvas.style.width =
+        particleWidth + "px";
+
+      canvas.style.height =
+        particleHeight + "px";
+
+      ctx.setTransform(
+        dpr,
+        0,
+        0,
+        dpr,
+        0,
+        0
+      );
+    }
+
+
+    class Particle {
+
+      constructor(initial = false) {
+
+        this.reset(initial);
+
+      }
+
+
+      reset(initial = false) {
+
+        this.x =
+          Math.random() * particleWidth;
+
+        this.y =
+          initial
+            ? Math.random() * particleHeight
+            : particleHeight + 30;
+
+        this.size =
+          Math.random() * 2.7 + .7;
+
+        this.speed =
+          Math.random() * .35 + .12;
+
+        this.wind =
+          Math.random() * .35 - .175;
+
+        this.rotation =
+          Math.random() * Math.PI * 2;
+
+        this.rotationSpeed =
+          Math.random() * .02 - .01;
+
+        this.opacity =
+          Math.random() * .45 + .15;
+
+        this.type =
+          Math.random() > .68
+            ? "petal"
+            : "sparkle";
+      }
+
+
+      update() {
+
+        this.y -= this.speed;
+
+        this.x +=
+          this.wind +
+          Math.sin(this.y * .01) * .12;
+
+        this.rotation +=
+          this.rotationSpeed;
+
+        if (this.y < -40) {
+          this.reset();
+        }
+
+      }
+
+
+      draw() {
+
+        ctx.save();
+
+        ctx.translate(
+          this.x,
+          this.y
+        );
+
+        ctx.rotate(
+          this.rotation
+        );
+
+        ctx.globalAlpha =
+          this.opacity;
+
+
+        if (this.type === "petal") {
+
+          ctx.fillStyle =
+            "rgba(218, 139, 158, .45)";
+
+          ctx.beginPath();
+
+          ctx.ellipse(
+            0,
+            0,
+            this.size * 1.5,
+            this.size * 3,
+            0,
+            0,
+            Math.PI * 2
+          );
+
+          ctx.fill();
+
+        } else {
+
+          ctx.fillStyle =
+            "rgba(200, 161, 90, .5)";
+
+          ctx.beginPath();
+
+          ctx.arc(
+            0,
+            0,
+            this.size,
+            0,
+            Math.PI * 2
+          );
+
+          ctx.fill();
+
+        }
+
+        ctx.restore();
+
+      }
+
+    }
+
+
+    function initializeParticles() {
+
+      const amount =
+        window.innerWidth < 600
+          ? 55
+          : 90;
+
+      particles =
+        Array.from(
+          { length: amount },
+          () => new Particle(true)
+        );
+    }
+
+
+    function animateParticles() {
+
+      ctx.clearRect(
+        0,
+        0,
+        particleWidth,
+        particleHeight
+      );
+
+      particles.forEach(particle => {
+
+        particle.update();
+        particle.draw();
+
+      });
+
+      requestAnimationFrame(
+        animateParticles
+      );
+    }
+
+
+    resizeCanvas();
+    initializeParticles();
+    animateParticles();
+
+
+    window.addEventListener(
+      "resize",
+      () => {
+
+        resizeCanvas();
+        initializeParticles();
+
+      }
+    );
+
+
+    /* =========================================================
+       UNBOXING
+       ========================================================= */
+
+    const landing =
+      document.getElementById("landing");
+
+    const envelope =
+      document.getElementById("envelope");
+
+    const bouquetScene =
+      document.getElementById("bouquetScene");
+
+
+    let hasOpened = false;
+
+
+    function openGift() {
+
+      if (hasOpened) return;
+
+      hasOpened = true;
+
+      envelope.classList.add("opening");
+
+
+      /*
+       * Give the envelope animation time to play,
+       * then reveal the bouquet.
+       */
+
+      setTimeout(() => {
+
+        landing.classList.add("hidden");
+
+        bouquetScene.classList.add("visible");
+
+      }, 750);
+
+    }
+
+
+    envelope.addEventListener(
+      "click",
+      openGift
+    );
+
+
+    envelope.addEventListener(
+      "keydown",
+      event => {
+
+        if (
+          event.key === "Enter" ||
+          event.key === " "
+        ) {
+
+          event.preventDefault();
+
+          openGift();
+
+        }
+
+      }
+    );
+
+
+    /* =========================================================
+       FLOWER INTERACTIONS
+       ========================================================= */
+
+    const flowers =
+      document.querySelectorAll(
+        ".flower"
+      );
+
+    const meaningModal =
+      document.getElementById(
+        "meaningModal"
+      );
+
+    const meaningTitle =
+      document.getElementById(
+        "meaningTitle"
+      );
+
+    const meaningText =
+      document.getElementById(
+        "meaningText"
+      );
+
+    const meaningIcon =
+      document.getElementById(
+        "meaningIcon"
+      );
+
+
+    /*
+     * Small emoji/icon association.
+     * Edit these if you want different icons.
+     */
+
+    const flowerIcons = {
+
+      "Pink Rose": "🌹",
+
+      "Pink Tulip": "🌷",
+
+      "Lavender Tulip": "💜",
+
+      "White Daisy": "🌼",
+
+      "Little Daisy": "🌼",
+
+      "Blush Rose": "🌸",
+
+      "Dusty Rose": "🌹",
+
+      "Baby's Breath": "🤍"
+
+    };
+
+
+    function showFlowerMeaning(flower) {
+
+      const name =
+        flower.dataset.flower;
+
+      const meaning =
+        flower.dataset.meaning;
+
+      meaningTitle.textContent =
+        name;
+
+      meaningText.textContent =
+        meaning;
+
+      meaningIcon.textContent =
+        flowerIcons[name] || "🌸";
+
+      meaningModal.classList.add(
+        "open"
+      );
+
+    }
+
+
+    flowers.forEach(flower => {
+
+      flower.addEventListener(
+        "click",
+        () => showFlowerMeaning(flower)
+      );
+
+
+      flower.addEventListener(
+        "keydown",
+        event => {
+
+          if (
+            event.key === "Enter" ||
+            event.key === " "
+          ) {
+
+            event.preventDefault();
+
+            showFlowerMeaning(flower);
+
+          }
+
+        }
+      );
+
+    });
+
+
+    /* =========================================================
+       LOVE LETTER
+       ========================================================= */
+
+    const ribbon =
+      document.getElementById(
+        "ribbon"
+      );
+
+    const letterModal =
+      document.getElementById(
+        "letterModal"
+      );
+
+
+    function openLetter() {
+
+      letterModal.classList.add(
+        "open"
+      );
+
+      createPetalBurst();
+
+    }
+
+
+    ribbon.addEventListener(
+      "click",
+      openLetter
+    );
+
+
+    ribbon.addEventListener(
+      "keydown",
+      event => {
+
+        if (
+          event.key === "Enter" ||
+          event.key === " "
+        ) {
+
+          event.preventDefault();
+
+          openLetter();
+
+        }
+
+      }
+    );
+
+
+    /* =========================================================
+       MODAL CLOSE
+       ========================================================= */
+
+    document
+      .querySelectorAll("[data-close]")
+      .forEach(button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            const modalId =
+              button.dataset.close;
+
+            document
+              .getElementById(modalId)
+              .classList.remove("open");
+
+          }
+        );
+
+      });
+
+
+    /*
+     * Clicking outside a card closes its modal.
+     */
+
+    [meaningModal, letterModal]
+      .forEach(modal => {
+
+        modal.addEventListener(
+          "click",
+          event => {
+
+            if (
+              event.target === modal
+            ) {
+
+              modal.classList.remove(
+                "open"
+              );
+
+            }
+
+          }
+        );
+
+      });
+
+
+    /*
+     * Escape closes modals.
+     */
+
+    document.addEventListener(
+      "keydown",
+      event => {
+
+        if (
+          event.key === "Escape"
+        ) {
+
+          document
+            .querySelectorAll(".modal.open")
+            .forEach(modal => {
+
+              modal.classList.remove(
+                "open"
+              );
+
+            });
+
+        }
+
+      }
+    );
+
+
+    /* =========================================================
+       PETAL / CONFETTI BURST
+       ========================================================= */
+
+    function createPetalBurst() {
+
+      const amount = 34;
+
+      const centerX =
+        window.innerWidth / 2;
+
+      const centerY =
+        window.innerHeight / 2;
+
+
+      for (
+        let i = 0;
+        i < amount;
+        i++
+      ) {
+
+        const petal =
+          document.createElement("div");
+
+        petal.className =
+          "burst-petal";
+
+
+        /*
+         * Random direction
+         */
+
+        const angle =
+          Math.random() *
+          Math.PI *
+          2;
+
+        const distance =
+          150 +
+          Math.random() * 400;
+
+
+        const x =
+          Math.cos(angle) *
+          distance;
+
+        const y =
+          Math.sin(angle) *
+          distance;
+
+
+        petal.style.left =
+          centerX + "px";
+
+        petal.style.top =
+          centerY + "px";
+
+        petal.style.setProperty(
+          "--x",
+          `${x}px`
+        );
+
+        petal.style.setProperty(
+          "--y",
+          `${y}px`
+        );
+
+        petal.style.setProperty(
+          "--rotation",
+          `${Math.random() * 720 - 360}deg`
+        );
+
+
+        /*
+         * Random pastel colors
+         */
+
+        const colors = [
+
+          "#e9aebd",
+          "#f7d9df",
+          "#ded8f1",
+          "#c8a15a",
+          "#c4d3c0",
+          "#fffaf4"
+
+        ];
+
+        petal.style.background =
+          colors[
+            Math.floor(
+              Math.random() *
+              colors.length
+            )
+          ];
+
+
+        petal.style.animationDelay =
+          `${Math.random() * .18}s`;
+
+
+        document.body.appendChild(
+          petal
+        );
+
+
+        setTimeout(
+          () => petal.remove(),
+          2200
+        );
+
+      }
+
+    }
+
+
+    const burstAgain =
+      document.getElementById(
+        "burstAgain"
+      );
+
+
+    burstAgain.addEventListener(
+      "click",
+      createPetalBurst
+    );
+
+
+    /* =========================================================
+       MUSIC TOGGLE
+       ========================================================= */
+
+    const music =
+      document.getElementById(
+        "backgroundMusic"
+      );
+
+    const musicToggle =
+      document.getElementById(
+        "musicToggle"
+      );
+
+
+    let musicPlaying = false;
+
+
+    musicToggle.addEventListener(
+      "click",
+      async () => {
+
+        try {
+
+          if (!musicPlaying) {
+
+            await music.play();
+
+            musicPlaying = true;
+
+            musicToggle.classList.add(
+              "playing"
+            );
+
+            musicToggle.querySelector(
+              ".music-icon"
+            ).textContent = "♫";
+
+          } else {
+
+            music.pause();
+
+            musicPlaying = false;
+
+            musicToggle.classList.remove(
+              "playing"
+            );
+
+            musicToggle.querySelector(
+              ".music-icon"
+            ).textContent = "♪";
+
+          }
+
+        } catch (error) {
+
+          /*
+           * Browsers may block playback until
+           * user interaction. Since this function
+           * itself is triggered by a click, it should
+           * normally work.
+           */
+
+          console.log(
+            "Audio playback unavailable:",
+            error
+          );
+
+        }
+
+      }
+    );
+
+
+    /* =========================================================
+       SMALL TOUCH IMPROVEMENT
+       ========================================================= */
+
+    document.addEventListener(
+      "touchstart",
+      () => {},
+      { passive: true }
+    );
+
+
+    /* =========================================================
+       INITIAL BURST — subtle ambient sparkle
+       ========================================================= */
+
+    setTimeout(() => {
+
+      /*
+       * Only run if the user has not already opened
+       * the bouquet.
+       */
+
+      if (!hasOpened) {
+
+        for (
+          let i = 0;
+          i < 12;
+          i++
+        ) {
+
+          const p =
+            new Particle(true);
+
+          p.y =
+            Math.random() *
+            particleHeight;
+
+          p.opacity =
+            .25;
+
+          particles.push(p);
+
+        }
+
+      }
+
+    }, 1200);
+
+  </script>
+
 </body>
 </html>
