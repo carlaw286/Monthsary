@@ -1,0 +1,706 @@
+/* ============================================================================
+   styles.css — companion stylesheet for BouquetApp.jsx
+   Import the Google Fonts below in your index.html <head>, e.g.:
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Assistant:wght@400;500;600&display=swap" rel="stylesheet">
+   ========================================================================= */
+
+/* --------------------------------- Tokens -------------------------------- */
+:root {
+  /* Palette — CUSTOMIZE here to shift the whole app's mood */
+  --cream: #fbf6ef;
+  --cream-deep: #f2e9db;
+  --blush: #f4d7de;
+  --rose-light: #eab8c4;
+  --rose-deep: #d98da0;
+  --lavender: #cdbbdc;
+  --lavender-deep: #ab8fc4;
+  --sage: #9caf8e;
+  --sage-bloom: #b9c9a3;
+  --stem-green: #7c9370;
+  --gold-soft: #d8b56b;
+  --gold-deep: #b9903f;
+  --plum-ink: #4a3a4e;
+  --plum-muted: #7a6a7e;
+  --paper: #fffdf9;
+
+  --font-display: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  --font-ui: "Assistant", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --shadow-soft: 0 18px 40px -20px rgba(74, 58, 78, 0.35);
+  --shadow-deep: 0 30px 60px -24px rgba(74, 58, 78, 0.45);
+  --radius-organic: 42% 58% 61% 39% / 45% 40% 60% 55%;
+  --transition-soft: 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* --------------------------------- Reset --------------------------------- */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  background: linear-gradient(180deg, var(--cream) 0%, var(--cream-deep) 100%);
+  color: var(--plum-ink);
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+svg {
+  display: block;
+  overflow: visible;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* -------------------------------- App root -------------------------------- */
+.bouquet-app {
+  position: relative;
+  min-height: 100dvh;
+  width: 100%;
+  overflow-x: hidden;
+  isolation: isolate;
+}
+
+/* -------------------------------- Petal field ------------------------------ */
+.petal-field {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.petal {
+  position: absolute;
+  top: -5%;
+  border-radius: var(--radius-organic);
+  background: linear-gradient(135deg, var(--blush), var(--rose-light));
+  animation-name: petal-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+}
+
+.petal:nth-of-type(3n) {
+  background: linear-gradient(135deg, var(--lavender), var(--lavender-deep));
+}
+
+.petal:nth-of-type(5n) {
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold-deep));
+}
+
+@keyframes petal-fall {
+  0% {
+    transform: translate(0, -10vh) rotate(var(--rot-start));
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--drift), 110vh) rotate(calc(var(--rot-start) + 220deg));
+    opacity: 0;
+  }
+}
+
+/* ---------------------------------- Landing -------------------------------- */
+.landing {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1.5rem, 6vw, 4rem);
+  text-align: center;
+}
+
+.landing-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+  max-width: 32rem;
+}
+
+.landing-eyebrow {
+  font-family: var(--font-ui);
+  font-size: clamp(0.75rem, 2vw, 0.9rem);
+  letter-spacing: 0.04em;
+  color: var(--plum-muted);
+  margin: 0;
+}
+
+.landing-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.2rem, 8vw, 3.6rem);
+  line-height: 1.05;
+  margin: 0 0 clamp(1rem, 4vw, 2rem);
+  color: var(--plum-ink);
+}
+
+.landing-hint {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  color: var(--plum-muted);
+  margin: 0.5rem 0 0;
+}
+
+/* Gift box — pure CSS, no image assets required */
+.gift-box {
+  position: relative;
+  width: clamp(9rem, 30vw, 13rem);
+  height: clamp(9rem, 30vw, 13rem);
+  min-width: 44px;
+  min-height: 44px;
+  animation: gift-pulse 3.2s ease-in-out infinite;
+}
+
+.gift-box-base {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: 6%;
+  top: 34%;
+  background: linear-gradient(160deg, var(--rose-light), var(--rose-deep));
+  border-radius: 10px 10px 16px 16px;
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--transition-soft);
+}
+
+.gift-box-lid {
+  position: absolute;
+  left: 2%;
+  right: 2%;
+  top: 20%;
+  height: 18%;
+  background: linear-gradient(160deg, var(--rose-deep), var(--gold-soft));
+  border-radius: 10px;
+  box-shadow: var(--shadow-soft);
+  transform-origin: 50% 100%;
+  transition: transform 700ms cubic-bezier(0.3, 1.4, 0.5, 1), opacity 500ms ease;
+}
+
+.gift-box-ribbon-v {
+  position: absolute;
+  left: 46%;
+  right: 46%;
+  top: 20%;
+  bottom: 6%;
+  background: var(--gold-deep);
+  transition: opacity 300ms ease;
+}
+
+.gift-box-ribbon-h {
+  position: absolute;
+  left: 2%;
+  right: 2%;
+  top: 44%;
+  height: 10%;
+  background: var(--gold-deep);
+}
+
+.gift-box-glow {
+  position: absolute;
+  inset: -20%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(216, 181, 107, 0.35), transparent 70%);
+  opacity: 0;
+  transition: opacity var(--transition-soft);
+}
+
+.gift-box:hover .gift-box-glow,
+.gift-box:focus-visible .gift-box-glow {
+  opacity: 1;
+}
+
+.gift-box:hover .gift-box-lid,
+.gift-box:focus-visible .gift-box-lid {
+  transform: rotate(-8deg) translateY(-4px);
+}
+
+.landing.is-opening .gift-box-lid {
+  transform: rotate(-100deg) translate(-30%, -60%);
+  opacity: 0;
+}
+
+.landing.is-opening .gift-box-base {
+  transform: scale(1.06);
+}
+
+.landing.is-opening .gift-box-ribbon-v,
+.landing.is-opening .gift-box-ribbon-h {
+  opacity: 0;
+}
+
+.landing.is-opening .landing-content {
+  animation: landing-fade-out 700ms ease forwards;
+}
+
+@keyframes landing-fade-out {
+  to {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+}
+
+@keyframes gift-pulse {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-6px) scale(1.015);
+  }
+}
+
+.gift-box:focus-visible,
+.bouquet-flower:focus-visible,
+.bouquet-ribbon:focus-visible,
+.btn:focus-visible,
+.audio-toggle:focus-visible {
+  outline: 2px solid var(--gold-deep);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+/* -------------------------------- Bouquet view ------------------------------ */
+.bouquet-view {
+  position: relative;
+  min-height: 100dvh;
+  padding: clamp(1.5rem, 5vw, 3rem) clamp(1rem, 5vw, 3rem) clamp(3rem, 8vw, 5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: view-rise 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes view-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.bouquet-header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 30rem;
+  margin-bottom: clamp(1rem, 4vw, 2rem);
+}
+
+.bouquet-eyebrow {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  color: var(--plum-muted);
+  margin: 0 0 0.35rem;
+}
+
+.bouquet-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2rem, 6vw, 3rem);
+  margin: 0 0 0.4rem;
+}
+
+.bouquet-subtitle {
+  font-family: var(--font-ui);
+  font-size: clamp(0.9rem, 2.4vw, 1rem);
+  color: var(--plum-muted);
+  margin: 0;
+}
+
+.bouquet-stage {
+  position: relative;
+  width: min(92vw, 34rem);
+  aspect-ratio: 1 / 1.05;
+  z-index: 1;
+}
+
+.bouquet-stems {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bouquet-flower {
+  position: absolute;
+  width: clamp(3.6rem, 13vw, 5.2rem);
+  height: clamp(3.6rem, 13vw, 5.2rem);
+  transform: translate(-50%, -50%) scale(var(--size, 1)) rotate(var(--rotate, 0deg));
+  transition: transform 260ms cubic-bezier(0.34, 1.56, 0.64, 1), filter 260ms ease;
+  padding: 0;
+  filter: drop-shadow(0 6px 10px rgba(74, 58, 78, 0.16));
+}
+
+.bouquet-flower:hover,
+.bouquet-flower:focus-visible {
+  transform: translate(-50%, -52%) scale(calc(var(--size, 1) * 1.14)) rotate(var(--rotate, 0deg));
+  filter: drop-shadow(0 10px 16px rgba(74, 58, 78, 0.22));
+}
+
+.bouquet-flower.is-active {
+  transform: translate(-50%, -54%) scale(calc(var(--size, 1) * 1.2)) rotate(0deg);
+}
+
+.flower-svg {
+  width: 100%;
+  height: 100%;
+  transition: transform 260ms ease;
+}
+
+.flower-svg.is-swaying {
+  animation: flower-sway 1.6s ease-in-out infinite;
+}
+
+@keyframes flower-sway {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(4deg);
+  }
+}
+
+.bouquet-ribbon {
+  position: absolute;
+  left: 50%;
+  bottom: -2%;
+  transform: translateX(-50%);
+  width: clamp(9rem, 30vw, 12rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 44px;
+}
+
+.ribbon-svg {
+  width: 100%;
+  height: auto;
+  transition: transform 220ms ease;
+}
+
+.bouquet-ribbon:hover .ribbon-svg,
+.bouquet-ribbon:focus-visible .ribbon-svg {
+  transform: translateY(-3px) scale(1.03);
+}
+
+.ribbon-label {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  color: var(--plum-muted);
+  letter-spacing: 0.01em;
+}
+
+/* --------------------------------- Modals ---------------------------------- */
+.modal-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 5vw, 2rem);
+  background: rgba(74, 58, 78, 0.32);
+  backdrop-filter: blur(6px);
+  animation: scrim-fade 260ms ease;
+}
+
+@keyframes scrim-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.flower-modal {
+  width: min(100%, 22rem);
+  background: rgba(255, 253, 249, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 22px;
+  padding: clamp(1.5rem, 5vw, 2rem);
+  text-align: center;
+  box-shadow: var(--shadow-deep);
+  backdrop-filter: blur(14px);
+  animation: modal-pop 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes modal-pop {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.flower-modal-icon {
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto 0.75rem;
+}
+
+.flower-modal h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+
+.flower-modal p {
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  color: var(--plum-muted);
+  line-height: 1.5;
+  margin: 0 0 1.25rem;
+}
+
+/* ------------------------------- Love letter -------------------------------- */
+.letter-modal {
+  width: min(100%, 34rem);
+  max-height: min(88dvh, 42rem);
+  overflow-y: auto;
+  background: rgba(255, 253, 249, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 26px;
+  box-shadow: var(--shadow-deep);
+  backdrop-filter: blur(18px);
+  animation: modal-pop 380ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.letter-modal-inner {
+  padding: clamp(1.75rem, 6vw, 3.25rem);
+}
+
+.letter-eyebrow {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  color: var(--gold-deep);
+  margin: 0 0 0.5rem;
+}
+
+.letter-modal h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  margin: 0 0 1.25rem;
+}
+
+.letter-paragraph {
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 2.6vw, 1.2rem);
+  line-height: 1.7;
+  color: var(--plum-ink);
+  margin: 0 0 1.1rem;
+  max-width: 42ch;
+}
+
+.letter-signoff {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--plum-muted);
+  margin: 1.5rem 0 2rem;
+}
+
+.letter-signature {
+  font-size: 1.3rem;
+  color: var(--plum-ink);
+}
+
+.letter-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* ---------------------------------- Buttons --------------------------------- */
+.btn {
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.85rem 1.5rem;
+  border-radius: 999px;
+  min-height: 44px;
+  transition: transform 200ms ease, box-shadow 200ms ease, background 200ms ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--rose-deep), var(--gold-soft));
+  color: var(--paper);
+  box-shadow: var(--shadow-soft);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--plum-ink);
+  border: 1px solid rgba(74, 58, 78, 0.25);
+}
+
+.btn-ghost:hover {
+  background: rgba(74, 58, 78, 0.06);
+}
+
+.btn-quiet {
+  background: rgba(74, 58, 78, 0.08);
+  color: var(--plum-ink);
+}
+
+.btn-quiet:hover {
+  background: rgba(74, 58, 78, 0.14);
+}
+
+/* --------------------------------- Confetti ---------------------------------- */
+.confetti-burst {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 25;
+  overflow: hidden;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: 40%;
+  border-radius: 3px;
+  animation-name: confetti-scatter;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  animation-fill-mode: forwards;
+}
+
+@keyframes confetti-scatter {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--drift), 70vh) rotate(340deg);
+    opacity: 0;
+  }
+}
+
+/* --------------------------------- Audio toggle ------------------------------- */
+.audio-toggle {
+  position: fixed;
+  right: clamp(1rem, 4vw, 1.75rem);
+  bottom: clamp(1rem, 4vw, 1.75rem);
+  z-index: 30;
+  width: 3.25rem;
+  height: 3.25rem;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 253, 249, 0.85);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  transition: transform 200ms ease, background 200ms ease;
+}
+
+.audio-toggle:hover {
+  transform: scale(1.06);
+}
+
+.audio-toggle.is-playing {
+  background: linear-gradient(135deg, var(--rose-light), var(--gold-soft));
+}
+
+.audio-toggle-icon svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  fill: var(--plum-ink);
+}
+
+/* ----------------------------------------------------------------------------
+   Responsive breakpoints
+   ---------------------------------------------------------------------------- */
+
+/* Small phones */
+@media (max-width: 380px) {
+  .bouquet-stage {
+    width: 96vw;
+  }
+  .letter-modal-inner {
+    padding: 1.5rem 1.25rem;
+  }
+}
+
+/* Tablets */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .bouquet-stage {
+    width: min(80vw, 30rem);
+  }
+}
+
+/* Desktop and up */
+@media (min-width: 1025px) {
+  .bouquet-stage {
+    width: min(46vw, 34rem);
+  }
+  .bouquet-flower {
+    width: clamp(4rem, 6vw, 5.5rem);
+    height: clamp(4rem, 6vw, 5.5rem);
+  }
+}
+
+/* Landscape phones — keep the gift box from overflowing short viewports */
+@media (max-height: 480px) and (orientation: landscape) {
+  .landing {
+    min-height: auto;
+    padding: 1.5rem 1rem;
+  }
+  .gift-box {
+    width: 7rem;
+    height: 7rem;
+  }
+  .landing-title {
+    font-size: 1.6rem;
+    margin-bottom: 0.75rem;
+  }
+}
