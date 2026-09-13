@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=Caveat:wght@500;600&display=swap"
     rel="stylesheet"
   />
 
@@ -1020,6 +1020,79 @@
       font-style: italic;
 
       text-align: right;
+    }
+
+    /* =========================================================
+       PHOTO GALLERY (polaroids) — CUSTOMIZE YOUR PHOTOS HERE
+       Add your own <img> files, sized ~600–900px wide is plenty.
+       ========================================================= */
+
+    .letter-photos {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 18px;
+
+      margin-top: 32px;
+      padding-top: 28px;
+
+      border-top: 1px dashed rgba(126, 63, 80, 0.2);
+    }
+
+    .polaroid {
+      background: #fff;
+      padding: 10px 10px 26px;
+      border-radius: 3px;
+
+      box-shadow:
+        0 12px 24px rgba(92, 60, 73, 0.18),
+        0 2px 6px rgba(92, 60, 73, 0.12);
+
+      width: clamp(120px, 28vw, 165px);
+
+      transition: transform .3s ease, box-shadow .3s ease;
+      cursor: default;
+    }
+
+    .polaroid:nth-child(1) { transform: rotate(-6deg); }
+    .polaroid:nth-child(2) { transform: rotate(4deg) translateY(10px); }
+    .polaroid:nth-child(3) { transform: rotate(-3deg); }
+
+    .polaroid:hover {
+      transform: rotate(0deg) scale(1.05) translateY(-4px);
+      box-shadow:
+        0 18px 32px rgba(92, 60, 73, 0.24),
+        0 4px 10px rgba(92, 60, 73, 0.16);
+      z-index: 2;
+    }
+
+    .polaroid img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 1px;
+      background: var(--cream-dark); /* shows while your photo loads */
+    }
+
+    .polaroid-caption {
+      display: block;
+      margin-top: 10px;
+
+      font-family: "Caveat", var(--serif);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+      text-align: center;
+    }
+
+    @media (max-width: 480px) {
+      .letter-photos {
+        gap: 12px;
+      }
+      .polaroid:nth-child(2) {
+        translate: 0 0;
+      }
     }
 
     .letter-actions {
@@ -2203,7 +2276,7 @@
 
 
         <div class="letter-small">
-          A little letter for baby
+          A little letter for bebu
         </div>
 
         <h2
@@ -2239,6 +2312,95 @@ Happy 7 months, baby.
 
         <div class="letter-signature">
           Still yours — Carl ♡
+        </div>
+
+
+        <!-- =====================================================
+             OUR PHOTOS — CUSTOMIZE THIS SECTION
+
+             Replace each src="..." with your own photo file.
+             Keep photos in the same folder as this HTML file
+             (or a subfolder like "photos/photo1.jpg") so the
+             relative paths work once you upload everything together.
+
+             Add or remove <div class="polaroid"> blocks freely —
+             the layout wraps and re-centers automatically.
+             Edit the caption text under each photo too.
+             ===================================================== -->
+
+        <div class="letter-photos">
+
+          <div class="polaroid">
+            <img
+              src="photos/photo1.png"
+              alt="Carl and Lourdette together"
+            >
+            <span class="polaroid-caption">
+              us :)
+            </span>
+          </div>
+
+          <div class="polaroid">
+            <img
+              src="photos/photo2.png"
+              alt="Carl and Lourdette together"
+            >
+            <span class="polaroid-caption">
+              month 1
+            </span>
+          </div>
+
+          <div class="polaroid">
+            <img
+              src="photos/photo3.png"
+              alt="Carl and Lourdette together"
+            >
+            <span class="polaroid-caption">
+              still here
+            </span>
+          </div>
+
+          <div class="polaroid">
+            <img
+              src="photos/photo4.png"
+              alt="Carl and Lourdette together"
+            >
+            <span class="polaroid-caption">
+              still here
+            </span>
+          </div>
+
+
+          <div class="polaroid">
+            <img
+              src="photos/photo5.png"
+              alt="Carl and Lourdette together"
+            >
+            <span class="polaroid-caption">
+              month 1
+            </span>
+          </div>
+
+          <div class="polaroid">
+            <img
+              src="photos/photo6.png"
+              alt="Carl and Lourdette together"
+            >
+            <span class="polaroid-caption">
+              still here
+            </span>
+          </div>
+
+          <div class="polaroid">
+            <img
+              src="photos/photo7.png"
+              alt="Carl and Lourdette together"
+            >
+            <span class="polaroid-caption">
+              still here
+            </span>
+          </div>
+
         </div>
 
 
